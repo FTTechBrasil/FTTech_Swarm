@@ -1,0 +1,29 @@
+###############################################
+# Syntax Coloring Map For FTTech_Swarm
+########################################
+
+########################################
+# Datatypes (KEYWORD1)
+########################################
+
+FT_SWARM			KEYWORD1
+
+########################################
+# Methods and Functions (KEYWORD2)
+########################################
+
+BeginTest	        	KEYWORD2
+Begin		        	KEYWORD2
+TransmitText	        	KEYWORD2
+TransmitData			KEYWORD2
+Sleep				KEYWORD2
+ReturnDateHex			KEYWORD2
+ToHex				KEYWORD2
+
+########################################
+# Constants (LITERAL1)
+########################################
+
+DEBUG_MODE	        	LITERAL1
+MAX_PAYLOAD			LITERAL1
+APP_ID				LITERAL1
