@@ -9,7 +9,7 @@ Arduino IDE Library to make our SmartNode Swarm easier to use. Improved usabilit
 - [FTTech SAMD51 Clicks](https://github.com/FTTechBrasil/FTTech_SAMD51_Clicks)
 
 ## Updates
-* 0.1.0 Initial Release
+* 0.1.1 Initial Release
 
 ## License
 - The MIT License (MIT)
