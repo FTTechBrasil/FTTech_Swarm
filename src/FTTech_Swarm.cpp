@@ -69,25 +69,21 @@ void FT_SWARM::Begin(void){
         Serial.println("Waiting until Tile gets its position and date/time, it should be ready in 5 minutes in an open area.");
     }
     while ((!_DATEFLAG)||(!_GPSFLAG)){
-        if (__DEBUG == true){
-            delay(5000);
-        }else{
-            FTClicks.sleepForSeconds(5);
-        }
+        delay(5000);
         digitalWrite(EXTERN_LED_PIN, !digitalRead(EXTERN_LED_PIN));
         if (_SWARM_SERIAL.available() > 0) {
-            delay(200);
+            delay(500);
             _okmessage = _SWARM_SERIAL.readStringUntil('\n');
             if (_okmessage == "$TILE POSITION*2d"){
                 _GPSFLAG = true;
                 if (__DEBUG == true){
-                    Serial.print("Tile Message: GPS position aquired.");
+                    Serial.println("Tile Message: GPS position aquired.");
                 }
             }
             if (_okmessage == "$TILE DATETIME*35"){
                 _DATEFLAG = true;
                 if (__DEBUG == true){
-                    Serial.print("Tile Message: date and time aquired.");
+                    Serial.println("Tile Message: date and time aquired.");
                 }
             }
         }
@@ -138,6 +134,10 @@ void FT_SWARM::Sleep(uint32_t _time){
     SendCommand("SL S=" + String(_time));
     String __dump = ShowDebug();
     FTClicks.sleepForSeconds(_time-1);
+    _SWARM_SERIAL.begin(115200);
+    delay(500);
+    while(!_SWARM_SERIAL);
+    __dump = ShowDebug();
     return;
 }
 
