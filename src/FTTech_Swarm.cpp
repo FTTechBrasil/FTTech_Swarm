@@ -64,6 +64,8 @@ void FT_SWARM::Begin(void){
     digitalWrite(EXTERN_LED_PIN, LOW);
     _SWARM_SERIAL.begin(115200);
     while(!_SWARM_SERIAL);
+    String __nothing = SendCommand("RT 0");
+    // __nothing = SendCommand("MT D=U");
     String _okmessage;
     if (__DEBUG == true){
         Serial.println("Waiting until Tile gets its position and date/time, it should be ready in 5 minutes in an open area.");
@@ -76,6 +78,7 @@ void FT_SWARM::Begin(void){
             _okmessage = _SWARM_SERIAL.readStringUntil('\n');
             if (_okmessage == "$TILE POSITION*2d"){
                 _GPSFLAG = true;
+                _DATEFLAG = true;
                 if (__DEBUG == true){
                     Serial.println("Tile Message: GPS position aquired.");
                 }
